@@ -1,0 +1,91 @@
+title: |-
+  Bitrise Jira Add FixVersion
+summary: |
+  Bitrise Jira Add FixVersion
+description: |
+  Bitrise Jira Add FixVersion
+website: https://github.com/HuascarBaptista/bitrise-step-upload-fix-version
+source_code_url: https://github.com/HuascarBaptista/bitrise-step-upload-fix-version
+support_url: https://github.com/HuascarBaptista/bitrise-step-upload-fix-version/issues
+host_os_tags:
+  - osx-10.10
+  - ubuntu-16.04
+
+# If this step should be available only for certain project types
+# just uncomment this `project_type_tags` section and include all the
+# project types supported by the step. If the step can be used for all
+# project types then you can just remove this section.
+# If no `project_type_tags` specified (or specified as an empty array)
+# that means the step can be used for any project type.
+# You can find more information about project type tags in the Step Development Guideline:
+# https://github.com/bitrise-io/bitrise/blob/master/_docs/step-development-guideline.md
+#
+# project_type_tags:
+#   - ios
+#   - macos
+#   - android
+#   - xamarin
+#   - react-native
+#   - cordova
+#   - ionic
+
+# Type tags are used for categorizing steps, for easier step discovery in Step Libraries.
+# You can find more information about type tags in the Step Development Guideline:
+# https://github.com/bitrise-io/bitrise/blob/master/_docs/step-development-guideline.md
+type_tags:
+  - utility
+
+is_requires_admin_user: false
+is_always_run: false
+is_skippable: true
+run_if: ""
+
+deps:
+  brew:
+    - name: git
+    - name: wget
+  apt_get:
+    - name: git
+    - name: wget
+
+
+toolkit:
+  go:
+    package_name: github.com/HuascarBaptista/bitrise-step-upload-fix-version
+
+inputs:
+  - user_name:
+    opts:
+      title: Jira user name
+      summary: User name on Jira (user's email).
+      description: User name on Jira (user's email).
+      is_required: true
+      is_expand: true
+      is_sensitive: true
+  - api_token:
+    opts:
+      title: Jira api token
+      summary: Api token generated on Jira.
+      description: Api token generated on Jira.
+      is_required: true
+      is_expand: true
+      is_sensitive: true
+  - fixVersion:
+    opts:
+      title: Jira FixVersion
+      summary: Jira fixVersion
+      description: Jira fixVersion to post
+      is_required: true
+  - jira_tickets:
+    opts:
+      title: Jira Tickets
+      summary: Jira Tickets separated with `|`
+      description: Jira Tickets separated with `|` as SIG-230|SIG-245
+  - base_url:
+    opts:
+      title: Jira base URL.
+      summary: URL of the presonal Jira software.
+      description: URL of the presonal Jira software.
+      is_required: true
+      is_expand: true
+      is_sensitive: true
