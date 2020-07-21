@@ -70,7 +70,7 @@ inputs:
       is_required: true
       is_expand: true
       is_sensitive: true
-  - fixVersion:
+  - fix_version:
     opts:
       title: Jira FixVersion
       summary: Jira fixVersion
